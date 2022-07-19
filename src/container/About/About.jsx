@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import { images } from '../../constant'
 import './About.scss'
 import { urlFor, client } from '../../client'
 
