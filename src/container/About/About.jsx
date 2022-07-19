@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { images } from '../../constant'
-
 import './About.scss'
-export default function About() {
+import { urlFor, client } from '../../client'
 
-  const abouts = [
-    {
-      skill: "Web Development", description: "I am a good web developer", img: images.about01
-    },
-    {
-      skill: "Web Design", description: "I am a good web design", img: images.about02
-    },
-    {
-      skill: "UI/UX", description: "I am a good UI/UX", img: images.about03
-    },
-  ]
+export default function About() {
+  
+ const [abouts, setAbouts] = useState([])
+
+ useEffect(() => {
+  const query =  '*[_type == "abouts"]'
+  client.fetch(query)
+  .then(data => {
+    setAbouts(data)
+  })
+ },[])
+
   return (
     <>
       <h2 className='head-text'>
