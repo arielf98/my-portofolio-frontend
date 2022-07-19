@@ -5,7 +5,7 @@ import './About.scss'
 import { urlFor, client } from '../../client'
 
 export default function About() {
-  
+
  const [abouts, setAbouts] = useState([])
 
  useEffect(() => {
@@ -14,7 +14,7 @@ export default function About() {
   .then(data => {
     setAbouts(data)
   })
- },[])
+ },[abouts])
 
   return (
     <>
@@ -33,10 +33,10 @@ export default function About() {
             whileHover={{scale: 1.1}}
             transition={{duration: 0.5, type: 'tween'}}
             className="app__profile-item"
-            key={about.skill + index}
+            key={about.title + index}
             >
-              <img src={about.img} alt={about.skill} />
-              <h2 className='bold-text' style={{marginTop: 20}}>{about.skill}</h2>
+              <img src={urlFor(about.imgUrl)} alt={about.title} />
+              <h2 className='bold-text' style={{marginTop: 20}}>{about.title}</h2>
               <p className='p-text' style={{marginTop: 10}}>{about.description}</p>
             </motion.div>
           ))
